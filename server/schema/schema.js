@@ -97,7 +97,7 @@ const Mutation = new GraphQLObjectType({
               directorId: args.directorId
             }
           },
-          { new: true }
+          { new: true, useFindAndModify: false }
         );
       }
     },
@@ -117,7 +117,7 @@ const Mutation = new GraphQLObjectType({
               age: args.age
             }
           },
-          { new: true }
+          { new: true, useFindAndModify: false }
         );
       }
     }
