@@ -39,7 +39,7 @@ const DirectorType = new GraphQLObjectType({
     movies: {
       type: new GraphQLList(MovieType), // GraphQLList for list
       resolve(parent, args) {
-        return Movies.findById(parent.id);
+        return Movies.find({ directorId: parent.id });
       }
     }
   })
