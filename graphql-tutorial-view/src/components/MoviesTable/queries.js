@@ -6,6 +6,11 @@ export const moviesQuery = gql`
       id
       name
       genre
+      rate
+      watched
+      director {
+        name
+      }
     }
   }
 `;
