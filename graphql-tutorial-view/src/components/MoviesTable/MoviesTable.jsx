@@ -18,27 +18,47 @@ import MoviesDialog from '../MoviesDialog/MoviesDialog';
 import withHocs from './MoviesTableHoc';
 
 const movies = [
-  { id: 1, name: 'Pulp Fiction', genre: 'Crime', rate: 10, director: { name: 'Quentin Tarantino' }, watched: true },
-  { id: 2, name: 'Lock, Stock and Two Smoking Barrels', genre: 'Crime-comedy', rate: 9, director: { name: 'Guy Ritchie' }, watched: false },
+  {
+    id: 1,
+    name: 'Pulp Fiction',
+    genre: 'Crime',
+    rate: 10,
+    director: { name: 'Quentin Tarantino' },
+    watched: true
+  },
+  {
+    id: 2,
+    name: 'Lock, Stock and Two Smoking Barrels',
+    genre: 'Crime-comedy',
+    rate: 9,
+    director: { name: 'Guy Ritchie' },
+    watched: false
+  }
 ];
 
 class MoviesTable extends React.Component {
   state = {
     anchorEl: null,
-    openDialog: false,
+    openDialog: false
   };
 
-  handleDialogOpen = () => { this.setState({ openDialog: true }); };
-  handleDialogClose = () => { this.setState({ openDialog: false }); };
+  handleDialogOpen = () => {
+    this.setState({ openDialog: true });
+  };
+  handleDialogClose = () => {
+    this.setState({ openDialog: false });
+  };
 
   handleClick = ({ currentTarget }, data) => {
     this.setState({
       anchorEl: currentTarget,
-      data,
+      data
     });
   };
 
-  handleClose = () => { this.setState({ anchorEl: null }); };
+  handleClose = () => {
+    this.setState({anchorEl: null})
+  };
 
   handleEdit = () => {
     this.props.onOpen(this.state.data);
@@ -57,7 +77,11 @@ class MoviesTable extends React.Component {
 
     return (
       <>
-        <MoviesDialog open={openDialog} handleClose={this.handleDialogClose} id={activeElem.id} />
+        <MoviesDialog
+          open={openDialog}
+          handleClose={this.handleDialogClose}
+          id={activeElem.id}
+        />
         <Paper className={classes.root}>
           <Table>
             <TableHead>
@@ -74,7 +98,9 @@ class MoviesTable extends React.Component {
               {movies.map(movie => {
                 return (
                   <TableRow key={movie.id}>
-                    <TableCell component="th" scope="row">{movie.name}</TableCell>
+                    <TableCell component="th" scope="row">
+                      {movie.name}
+                    </TableCell>
                     <TableCell>{movie.genre}</TableCell>
                     <TableCell align="right">{movie.rate}</TableCell>
                     <TableCell>{movie.director.name}</TableCell>
@@ -83,12 +109,24 @@ class MoviesTable extends React.Component {
                     </TableCell>
                     <TableCell align="right">
                       <>
-                        <IconButton color="inherit" onClick={(e) => this.handleClick(e, movie)}>
+                        <IconButton
+                          color="inherit"
+                          onClick={e => this.handleClick(e, movie)}
+                        >
                           <MoreIcon />
                         </IconButton>
-                        <Menu id="simple-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={this.handleClose} >
-                          <MenuItem onClick={this.handleEdit}><CreateIcon /> Edit</MenuItem>
-                          <MenuItem onClick={this.handleDelete}><DeleteIcon/> Delete</MenuItem>
+                        <Menu
+                          id="simple-menu"
+                          anchorEl={anchorEl}
+                          open={Boolean(anchorEl)}
+                          onClose={this.handleClose}
+                        >
+                          <MenuItem onClick={this.handleEdit}>
+                            <CreateIcon /> Edit
+                          </MenuItem>
+                          <MenuItem onClick={this.handleDelete}>
+                            <DeleteIcon /> Delete
+                          </MenuItem>
                         </Menu>
                       </>
                     </TableCell>
@@ -101,6 +139,6 @@ class MoviesTable extends React.Component {
       </>
     );
   }
-};
+}
 
 export default withHocs(MoviesTable);
