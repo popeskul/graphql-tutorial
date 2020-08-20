@@ -1,4 +1,4 @@
-const graphql = require('graphql');
+const graphql = require("graphql");
 
 const {
   GraphQLObjectType,
@@ -11,12 +11,12 @@ const {
   GraphQLBoolean
 } = graphql;
 
-const Movies = require('../models/movie');
-const Directors = require('../models/director');
+const Movies = require("../models/movie");
+const Directors = require("../models/director");
 
 // db schema
 const MovieType = new GraphQLObjectType({
-  name: 'Movie',
+  name: "Movie",
   fields: () => ({
     // lazy fields
     id: { type: GraphQLID },
@@ -34,7 +34,7 @@ const MovieType = new GraphQLObjectType({
 });
 
 const DirectorType = new GraphQLObjectType({
-  name: 'Director',
+  name: "Director",
   fields: () => ({
     // lazy fields
     id: { type: GraphQLID },
@@ -50,7 +50,7 @@ const DirectorType = new GraphQLObjectType({
 });
 
 const Mutation = new GraphQLObjectType({
-  name: 'Mutation',
+  name: "Mutation",
   fields: {
     addDirector: {
       type: DirectorType,
@@ -131,13 +131,27 @@ const Mutation = new GraphQLObjectType({
           { new: true, useFindAndModify: false }
         );
       }
+    },
+    deleteMovie: {
+      type: MovieType,
+      args: { id: { type: GraphQLID } },
+      resolve(parent, { id }) {
+        return Movies.findByIdAndRemove(id);
+      }
+    },
+    deleteDirector: {
+      type: DirectorType,
+      args: { id: { type: GraphQLID } },
+      resolve(parent, { id }) {
+        return Directors.findByIdAndRemove(id);
+      }
     }
   }
 });
 
 // root query
 const Query = new GraphQLObjectType({
-  name: 'Query',
+  name: "Query",
   fields: {
     movie: {
       type: MovieType,
