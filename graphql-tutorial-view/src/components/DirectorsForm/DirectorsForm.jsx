@@ -1,11 +1,11 @@
-import React from 'react';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import Dialog from '@material-ui/core/Dialog';
-import SaveIcon from '@material-ui/icons/Save';
+import React from "react";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import Dialog from "@material-ui/core/Dialog";
+import SaveIcon from "@material-ui/icons/Save";
 
-import withHocs from './DirectorsFormHoc';
+import withHocs from "./DirectorsFormHoc";
 
 class DirectorsForm extends React.Component {
   handleClose = () => {
@@ -27,36 +27,36 @@ class DirectorsForm extends React.Component {
       <Dialog
         onClose={this.handleClose}
         open={open}
-        aria-labelledby='simple-dialog-title'
+        aria-labelledby="simple-dialog-title"
       >
-        <DialogTitle className={classes.title} id='simple-dialog-title'>
+        <DialogTitle className={classes.title} id="simple-dialog-title">
           Director information
         </DialogTitle>
-        <form className={classes.container} noValidate autoComplete='off'>
+        <form className={classes.container} noValidate autoComplete="off">
           <TextField
-            id='outlined-name'
-            label='Name'
+            id="outlined-name"
+            label="Name"
             className={classes.textField}
             value={name}
-            onChange={handleChange('name')}
-            margin='normal'
-            variant='outlined'
+            onChange={handleChange("name")}
+            margin="normal"
+            variant="outlined"
           />
           <TextField
-            id='outlined-rate'
-            label='Age'
+            id="outlined-rate"
+            label="Age"
             className={classes.textField}
             value={age}
-            onChange={handleChange('age')}
-            type='number'
-            margin='normal'
-            variant='outlined'
+            onChange={handleChange("age")}
+            type="number"
+            margin="normal"
+            variant="outlined"
           />
           <div className={classes.wrapper}>
             <Button
               onClick={this.handleSave}
-              variant='contained'
-              color='primary'
+              variant="contained"
+              color="primary"
               className={classes.button}
             >
               <SaveIcon /> Save

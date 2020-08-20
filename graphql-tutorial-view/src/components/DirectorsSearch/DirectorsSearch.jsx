@@ -1,11 +1,10 @@
-import React from 'react';
-import InputBase from '@material-ui/core/InputBase';
-import SearchIcon from '@material-ui/icons/Search';
+import React from "react";
+import InputBase from "@material-ui/core/InputBase";
+import SearchIcon from "@material-ui/icons/Search";
 
-import withHocs from './DirectorsSearchHoc';
+import withHocs from "./DirectorsSearchHoc";
 
 class DirectorsSearch extends React.Component {
-
   render() {
     const { classes } = this.props;
 
@@ -24,6 +23,6 @@ class DirectorsSearch extends React.Component {
       </div>
     );
   }
-};
+}
 
 export default withHocs(DirectorsSearch);

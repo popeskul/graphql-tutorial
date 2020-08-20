@@ -21,13 +21,13 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "pretty": "prettier --write '**/*.{js,css,scss}'",
+    "pretty": "prettier --write '**/*.{js,jsx,,css,scss}'",
     "lint": "eslint src/**/*.js",
-    "lint:fix": "eslint --fix src/**/*.js"
+    "lint:fix": "eslint --fix src/**/*.{js,jsx}"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint:fix && npm run pretty && git add .",
+      "pre-commit": "npm run lint:fix && npm run pretty",
       "pre-push": "npm run lint"
     }
   },

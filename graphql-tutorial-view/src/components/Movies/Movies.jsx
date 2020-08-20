@@ -1,38 +1,38 @@
-import React from 'react';
-import Fab from '@material-ui/core/Fab';
-import AddIcon from '@material-ui/icons/Add';
+import React from "react";
+import Fab from "@material-ui/core/Fab";
+import AddIcon from "@material-ui/icons/Add";
 
-import MoviesTable from '../MoviesTable/MoviesTable';
-import MoviesForm from '../MoviesForm/MoviesForm';
+import MoviesTable from "../MoviesTable/MoviesTable";
+import MoviesForm from "../MoviesForm/MoviesForm";
 
-import withHocs from './MoviesHoc';
+import withHocs from "./MoviesHoc";
 
 class Movies extends React.Component {
   state = {
     open: false,
-    name: '',
-    genre: '',
+    name: "",
+    genre: "",
     watched: false,
     rate: 0,
-    directorId: ''
+    directorId: "",
   };
 
   handleClickOpen = (data = {}) => {
     this.setState({
       open: true,
       ...data,
-      directorId: data.director ? data.director.id : ''
+      directorId: data.director ? data.director.id : "",
     });
   };
 
   handleClose = () => {
     this.setState({
-      name: '',
-      genre: '',
+      name: "",
+      genre: "",
       watched: false,
       rate: 0,
-      directorId: '',
-      open: false
+      directorId: "",
+      open: false,
     });
   };
 
@@ -67,8 +67,8 @@ class Movies extends React.Component {
           />
           <Fab
             onClick={() => this.handleClickOpen()}
-            color='primary'
-            aria-label='Add'
+            color="primary"
+            aria-label="Add"
             className={classes.fab}
           >
             <AddIcon />
